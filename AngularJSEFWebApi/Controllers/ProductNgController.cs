@@ -23,5 +23,10 @@ namespace AngularJSEFWebApi.Controllers
 
             return Json(products, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult IndexNg()
+        {
+            return View();
+        }
     }
 }
