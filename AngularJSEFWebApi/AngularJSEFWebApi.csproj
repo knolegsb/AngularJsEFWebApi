@@ -234,6 +234,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactApiController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\EmployeeApiController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductApiController.cs" />
     <Compile Include="Controllers\ProductNgController.cs" />
@@ -253,9 +257,27 @@
     <Compile Include="Migrations\201610270530597_AddSeedDataAgain.Designer.cs">
       <DependentUpon>201610270530597_AddSeedDataAgain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610271813323_AddEmployeeTable.cs" />
+    <Compile Include="Migrations\201610271813323_AddEmployeeTable.Designer.cs">
+      <DependentUpon>201610271813323_AddEmployeeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610271814243_AddSeedDataForEmployees.cs" />
+    <Compile Include="Migrations\201610271814243_AddSeedDataForEmployees.Designer.cs">
+      <DependentUpon>201610271814243_AddSeedDataForEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610280726201_AddContactTable.cs" />
+    <Compile Include="Migrations\201610280726201_AddContactTable.Designer.cs">
+      <DependentUpon>201610280726201_AddContactTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610280728006_AddContactDataSeed.cs" />
+    <Compile Include="Migrations\201610280728006_AddContactDataSeed.Designer.cs">
+      <DependentUpon>201610280728006_AddContactDataSeed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -531,6 +553,9 @@
     <Content Include="Content\materialize\font\material-design-icons\Material-Design-Icons.svg" />
     <Content Include="Content\metisMenu.css" />
     <Content Include="Content\metisMenu.min.css" />
+    <Content Include="empView\Delete.html" />
+    <Content Include="empView\Edit.html" />
+    <Content Include="empView\List.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -747,6 +772,8 @@
     <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Scripts\empApp\app.js" />
+    <Content Include="Scripts\empApp\controller.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
@@ -794,6 +821,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ProductNg\Index.cshtml" />
     <Content Include="Views\ProductNg\IndexNg.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -814,6 +842,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610270530597_AddSeedDataAgain.resx">
       <DependentUpon>201610270530597_AddSeedDataAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610271813323_AddEmployeeTable.resx">
+      <DependentUpon>201610271813323_AddEmployeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610271814243_AddSeedDataForEmployees.resx">
+      <DependentUpon>201610271814243_AddSeedDataForEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610280726201_AddContactTable.resx">
+      <DependentUpon>201610280726201_AddContactTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610280728006_AddContactDataSeed.resx">
+      <DependentUpon>201610280728006_AddContactDataSeed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

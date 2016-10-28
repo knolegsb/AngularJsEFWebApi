@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html ng-app="empApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @*<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/angular.min.js")" rel="stylesheet" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/angular-route.js")" type="text/javascript"></script>*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<script src="~/Scripts/angular.min.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/empApp/app.js"></script>
+    <script src="~/Scripts/empApp/controller.js"></script>
+</head>
+<body>
+    <div class="main container" ng-view>
+
+    </div>
+
+</body>
+</html>
+
