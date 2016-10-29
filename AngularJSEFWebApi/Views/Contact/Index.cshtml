@@ -1,0 +1,157 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AngularJS &amp; Bootstrap CRUD Operations</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/contactApp/contactApp.js"></script>
+</head>
+<body>
+    <div class="container" style="padding-top: 20px;">
+        <div ng-app="contactApp" ng-controller="contactController" class="container">
+            <div ng-show="error" class="alert alert-danger alert-dismissable" role="alert">
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;<span class="sr-only">Close</span></span>
+                </button>
+                {{error}}
+            </div>
+
+            <p><a ng-click="showadd()" href="javascript:;" class="btn btn-primary">Add New Contact</a></p>
+
+            <div class="modal fade" id="contactModel" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                            <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add Contact</h4>
+                            <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit Contact</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form" name="addcontactform">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model="contact.name" class="form-control" id="title" placeholder="Your Name" required title="Enter your name" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Address</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model="contact.address" class="form-control" id="title" placeholder="Your Address" required title="Enter your address" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Phone</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model="contact.phone" class="form-control" id="title" placeholder="Your Phone Number" required title="Enter your phone number" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <span ng-hide="editMode">
+                                            <input type="submit" value="Add" ng-disabled="addcontactform.$invalid" ng-click="add()" class="btn btn-primary" />
+                                        </span>
+                                        <span ng-show="editMode">
+                                            <input type="submit" value="Update" ng-disabled="addcontactform.$invalid" ng-click="update()" class="btn btn-primary" />
+                                        </span>
+                                        <input type="button" value="Cancel" ng-click="cancel()" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Contacts List</h1>
+            <table class="table table-hover">
+                <tr>
+                    <th>Contact ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Operations</th>
+                </tr>
+                <tr ng-repeat="contact in contacts">
+                    <td><strong>{{contact.id}}</strong></td>
+                    <td><p>{{contact.name}}</p></td>
+                    <td><p>{{contact.address}}</p></td>
+                    <td><p>{{contact.phone}}</p></td>
+                    <td>
+                        <p>
+                            <a class="btn btn-success" ng-click="get(contact)" href="javascript:;">View</a> |
+                            <a class="btn btn-success" ng-click="edit(contact)" href="javascript:;">Edit</a> |
+                            <a class="btn btn-success" ng-click="showconfirm(contact)" href="javascript:;">Delete</a>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <hr />
+
+            <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                            <h4 class="modal-title" id="myModalLabel">View Contact</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form" name="viewcontact">
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-2 control-label">Name</label>
+                                    <div class="col-sm-10">
+                                        {{contact.name}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Address" class="col-sm-2 control-label">Address</label>
+                                    <div class="col-sm-10">
+                                        {{contact.address}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Phone" class="col-sm-2 control-label">Phone</label>
+                                    <div class="col-sm-10">
+                                        {{contact.phone}}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                            <h4 class="modal-title" id="myModalLabel">Confirm Action</h4>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure to delete?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" ng-click="delete()">Ok</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

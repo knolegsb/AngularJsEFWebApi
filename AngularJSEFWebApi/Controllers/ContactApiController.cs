@@ -17,7 +17,7 @@ namespace AngularJSEFWebApi.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         [HttpPost]
-        public int AddUser(Contact contact)
+        public int AddContact(Contact contact)
         {
             db.Contacts.Add(contact);
             db.SaveChanges();
@@ -38,7 +38,7 @@ namespace AngularJSEFWebApi.Controllers
         }
 
         [HttpPut]
-        public void ModifiyContact(Contact contact, int id)
+        public void ModifyContact(Contact contact, int id)
         {
             if (contact.Id == id)
             {
